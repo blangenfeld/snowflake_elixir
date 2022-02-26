@@ -48,9 +48,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -80,9 +80,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -102,9 +102,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
 
     if Map.get(response, :body, "") == "" do
@@ -149,9 +149,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
     |> process_query()
   end
@@ -169,9 +169,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -192,9 +192,9 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000,
-        recv_timeout: 180_000
-      ]
+        timeout: 180_000
+      ],
+      recv_timeout: 180_000
     )
     |> Map.get(:body)
     |> Jason.decode!()
