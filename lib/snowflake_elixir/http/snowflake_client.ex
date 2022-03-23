@@ -5,6 +5,10 @@ defmodule SnowflakeEx.HTTPClient do
   """
   require Logger
 
+  # TODO: Make timeouts configurable.
+  @timeout :timer.minutes(3)
+  @recv_timeout :timer.minutes(3)
+
   @doc ~S"""
   Logs into Snowflake, returning a token and Session ID. The token can be used for querying in future.
   """
@@ -48,9 +52,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -80,9 +86,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -102,9 +110,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
 
     if Map.get(response, :body, "") == "" do
@@ -149,9 +159,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
     |> process_query()
   end
@@ -169,9 +181,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
     |> Map.get(:body)
     |> Jason.decode!()
@@ -192,9 +206,11 @@ defmodule SnowflakeEx.HTTPClient do
       hackney: [
         :insecure,
         pool: :snowflake_pool,
-        timeout: 180_000
+        timeout: @timeout,
+        recv_timeout: @recv_timeout
       ],
-      recv_timeout: 180_000
+      timeout: @timeout,
+      recv_timeout: @recv_timeout
     )
     |> Map.get(:body)
     |> Jason.decode!()

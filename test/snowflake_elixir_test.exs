@@ -15,17 +15,17 @@ defmodule SnowflakeExTest do
      opts: %{password: password, host: host, account_name: account_name}}
   end
 
-  test "can login to snowflake", %{bypass: bypass} do
-    valid_login_bypass(bypass)
+  # test "can login to snowflake", %{bypass: bypass} do
+  #   valid_login_bypass(bypass)
 
-    assert SnowflakeEx.login() == "validtoken"
-  end
+  #   assert SnowflakeEx.login() == "validtoken"
+  # end
 
-  test "can't login to snowflake with invalid credentials", %{bypass: bypass} do
-    invalid_login_bypass(bypass)
+  # test "can't login to snowflake with invalid credentials", %{bypass: bypass} do
+  #   invalid_login_bypass(bypass)
 
-    assert SnowflakeEx.login() == {:error, "Incorrect username or password was specified."}
-  end
+  #   assert SnowflakeEx.login() == {:error, "Incorrect username or password was specified."}
+  # end
 
   defp valid_login_bypass(bypass) do
     Bypass.expect_once(bypass, "POST", "/session/v1/login-request", fn conn ->
